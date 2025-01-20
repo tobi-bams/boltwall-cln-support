@@ -39,12 +39,19 @@ export function boltwall(
     else req.logger = logger
     req.boltwallConfig = config
     return compose([
+      // @ts-ignore
       parseEnv,
+      // @ts-ignore
       node,
+      // @ts-ignore
       invoice,
+      // @ts-ignore
       token,
+      // @ts-ignore
       validateLsat,
+      // @ts-ignore
       paywall,
+      // @ts-ignore
       errorHandler,
     ])(req, res, next)
   }

@@ -1,6 +1,6 @@
 {
-  "name": "boltwall-cln-support",
-  "version": "6.0.14",
+  "name": "cln-lnd-boltwall",
+  "version": "7.0.16",
   "description": "A Nodejs + Express middleware for adding a lightning-based paywall to API routes w/ macaroons for flexible delegation.",
   "main": "dist/index.js",
   "repository": "git@github.com:Tierion/boltwall.git",
@@ -25,14 +25,15 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.12.5",
+    "@grpc/proto-loader": "^0.7.13",
     "@zeit/ncc": "^0.21.0",
     "binet": "^0.3.5",
     "blgr": "^0.1.7",
     "compose-middleware": "5.0.1",
     "dotenv": "8.0.0",
     "express": "4.17.1",
-    "grpc": "^1.24.11",
-    "ln-service": "https://github.com/bucko13/ln-service#path",
+    "ln-service": "57.23.0",
     "lsat-js": "^2.0.3",
     "macaroon": "github:tierion/js-macaroon#ts",
     "opennode": "1.2.1",
@@ -52,6 +53,7 @@
     "@types/request-promise-native": "^1.0.17",
     "@types/sinon": "^7.5.1",
     "@types/supertest": "^2.0.8",
+    "@types/ws": "8.5.3",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "body-parser": "1.19.0",
@@ -71,7 +73,7 @@
     "ts-mocha": "^6.0.0",
     "tslint": "^5.20.1",
     "typedoc": "^0.15.3",
-    "typescript": "^3.7.2",
+    "typescript": "^3.9.7",
     "yarn-audit-fix": "^4.3.3"
   },
   "peerDependencies": {

@@ -219,7 +219,7 @@ export function createLsatFromInvoice(
   if (req.boltwallConfig && req.boltwallConfig.oauth) {
     if (!req.query.auth_uri)
       throw new Error('Missing auth_uri in request query')
-    location = req.query.auth_uri
+    location = req.query.auth_uri as string
   }
 
   const builder = Macaroon.newMacaroon({
@@ -307,13 +307,13 @@ This means payer can pay whatever they want for access.'
   } else if (oauth && query.auth_uri) {
     // dealing with auth_uri request
     try {
-      const url = new URL(query.auth_uri)
+      const url = new URL(query.auth_uri as string)
       if (!url.protocol.includes('http'))
         throw new Error('unsupported protocol')
     } catch (e) {
       throw new Error('auth_uri invalid format')
     }
-    const uri = new URL('/invoice', query.auth_uri)
+    const uri = new URL('/invoice', query.auth_uri as string)
     // using JSON tools to clear auth_uri from query string
     const qs = JSON.parse(JSON.stringify({ ...query, auth_uri: undefined }))
     const options = {
