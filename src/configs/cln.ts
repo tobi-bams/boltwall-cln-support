@@ -1,5 +1,15 @@
 import * as fs from 'fs'
-import * as grpc from 'grpc'
+// import * as grpc from 'grpc'
+import * as grpc from '@grpc/grpc-js'
+import { loadSync, Options } from '@grpc/proto-loader'
+
+const opts: Options = {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  defaults: true,
+  oneofs: true,
+}
 
 const loadMTLSCredentials = (
   tls_location: string,
@@ -24,7 +34,11 @@ export default async function loadCln(
     tls_chain_location
   )
 
-  const descriptor = await grpc.load('proto/cln.proto')
+  // const descriptor = await grpc.load('proto/cln.proto')
+
+  const descriptor = grpc.loadPackageDefinition(
+    loadSync(`proto/cln.proto`, opts)
+  )
   const cln = descriptor.cln
   const options = {
     'grpc.ssl_target_name_override': 'localhost',

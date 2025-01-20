@@ -7,7 +7,7 @@ const {
   boltwall,
   TIME_CAVEAT_CONFIGS,
   ORIGIN_CAVEAT_CONFIGS,
-  ROUTE_CAVEAT_CONFIGS
+  ROUTE_CAVEAT_CONFIGS,
 } = require('./index')
 
 const app: express.Application = express()
